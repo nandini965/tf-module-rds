@@ -32,9 +32,6 @@ resource "aws_security_group" "main" {
 resource "aws_rds_cluster_parameter_group" "main" {
   name        = "${var.name}-${var.env}-pg"
   family     = "aurora-mysql5.7"
-
-  tags = merge(var.tags, { Name = "${var.name}-${var.env}-pg" })
-
 }
 
 resource "aws_rds_cluster" "main" {
