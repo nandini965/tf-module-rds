@@ -48,7 +48,6 @@ resource "aws_rds_cluster" "main" {
   skip_final_snapshot     = true
   storage_encrypted       = true
   kms_key_id                      = var.kms_arn
-
   tags                            = merge(var.tags, { Name = "${var.name}-${var.env}-rds" })
 
 }
