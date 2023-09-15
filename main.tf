@@ -31,7 +31,7 @@ resource "aws_security_group" "main" {
 
 resource "aws_rds_cluster_parameter_group" "main" {
   name        = "${var.name}-${var.env}"
-  family     = "aurora-mysql5.7"
+  family     = "aurora-mysql8.0"
 
   tags = merge(var.tags, { Name = "${var.name}-${var.env}-pg" })
 
