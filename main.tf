@@ -45,7 +45,7 @@ resource "aws_rds_cluster" "main" {
   preferred_backup_window = "07:00-09:00"
   vpc_security_group_ids          = [aws_security_group.main.id]
   db_subnet_group_name            = aws_db_subnet_group.main.name
-  kip_final_snapshot     = true
+  skip_final_snapshot     = true
   storage_encrypted       = true
   kms_key_id                      = var.kms_arn
 
