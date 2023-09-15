@@ -43,12 +43,12 @@ resource "aws_rds_cluster" "main" {
   master_password         = data.aws_ssm_parameter.db_pass.value
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
-  skip_final_snapshot     = true
-  storage_encrypted       = true
-  db_subnet_group_name            = aws_db_subnet_group.main.name
-  db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.main.name
-  kms_key_id                      = var.kms_arn
   vpc_security_group_ids          = [aws_security_group.main.id]
+  db_subnet_group_name            = aws_db_subnet_group.main.name
+  kip_final_snapshot     = true
+  storage_encrypted       = true
+  kms_key_id                      = var.kms_arn
+
   tags                            = merge(var.tags, { Name = "${var.name}-${var.env}-rds" })
 
 }
