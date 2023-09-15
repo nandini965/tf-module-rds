@@ -47,7 +47,7 @@ resource "aws_rds_cluster" "main" {
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
-
+  storage_encrypted       = true
   db_subnet_group_name            = aws_db_subnet_group.main.name
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.main.name
   kms_key_id                      = var.kms_arn
@@ -62,5 +62,5 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
  instance_class     = var.instance_class
   engine          = aws_rds_cluster.main.engine
    engine_version  = aws_rds_cluster.main.engine_version
-   tags            = merge(var.tags, { Name = "${var.name}-${var.env}-rds-${count.index+1}" })
+   tags            = merge(var.tags, { Name = "${var.env}-${var.name}-rds-${count.index+1}" })
 }
